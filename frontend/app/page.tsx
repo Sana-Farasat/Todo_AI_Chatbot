@@ -88,10 +88,10 @@ export default function Home() {
 							transition={{ delay: 1 + index * 0.15, duration: 0.5 }}
 							className="group relative bg-gray-900/60 backdrop-blur-xl p-8 rounded-2xl border border-gray-800 hover:border-amber-500/50 transition-all duration-500 shadow-xl shadow-black/20 hover:shadow-amber-900/10"
 						>
-							<div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500" />
+							<div className="absolute inset-0 bg-linear-to-br from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 rounded-2xl transition-opacity duration-500" />
 
 							<div className="relative z-10">
-								<div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500/20 to-amber-600/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+								<div className="w-14 h-14 rounded-xl bg-linear-to-br from-amber-500/20 to-amber-600/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
 									<feature.icon className="w-7 h-7 text-amber-500" />
 								</div>
 
