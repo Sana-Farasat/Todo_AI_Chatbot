@@ -54,7 +54,6 @@ This is a complete full-stack task management system where users can manage task
 - Error handling
 ---
 ## Project Structure
-```
 grok_todo - Copy/
 ├── frontend/                 # Next.js frontend
 │   ├── app/                  # App router pages
@@ -92,8 +91,7 @@ grok_todo - Copy/
 │
 ├── specs/                  # Specification documents
 │   └── 003-gemini-chatbot/
-└���─ README.md             # This file
-```
+└── README.md             # This file
 ---
 ## Setup Instructions
 ### Prerequisites
@@ -107,96 +105,70 @@ grok_todo - Copy/
 # Open terminal and clone
 git clone https://github.com/YOUR_USERNAME/grok_todo.git
 cd grok_todo
-```
 ---
-### Step 2: Frontend Setup
+Step 2: Frontend Setup
 Navigate to the frontend directory:
-```bash
 cd frontend
-```
 Install dependencies:
-```bash
 npm install
-```
 Create environment file:
-```bash
-# Create .env.local with your settings
 cp .env.example .env.local
-```
-Edit `.env.local` with your values:
-```env
+Edit .env.local with your values:
 BETTER_AUTH_SECRET=your_secret_key_here
 BETTER_AUTH_URL=http://localhost:3000
-NEXT_PUBLIC_API_URL=http://localhost:8000
-DATABASE_URL= "postgresql://neondb_owner------------------------"
-```
+DATABASE_URL=postgresql://user:pass@host/dbname?sslmode=require
+Run database migrations (from frontend directory):
+# Option 1: Using npm scripts (after adding to package.json)
+npm run db:generate
+npm run db:push
+# Option 2: Using npx directly
+npx drizzle-kit generate
+npx drizzle-kit push
 Start development server:
-```bash
 npm run dev
-```
-Frontend will be running at: **http://localhost:3000**
+Frontend will be running at: http://localhost:3000
 ---
-### Step 3: Backend Setup
+Step 3: Backend Setup
 Open a new terminal and navigate to backend:
-```bash
 cd backend
-```
 Create virtual environment:
-```bash
 # Create venv
 python -m venv .venv
 # Activate (Windows)
 .venv\Scripts\activate.ps1
 # Activate (Linux/Mac)
 source .venv/bin/activate
-```
 Install dependencies:
-```bash
 pip install -r requirements.txt
-```
 Or with uv:
-```bash
 uv sync
-```
 Create environment file:
-```bash
 cp .env.example .env
-```
-Edit `.env` with your values:
-```env
+Edit .env with your values:
 DATABASE_URL=postgresql+asyncpg://user:pass@host/dbname?sslmode=require
 BETTER_AUTH_SECRET=your_secret_key_here
 GEMINI_API_KEY=your_gemini_api_key
-```
 Start the backend server:
-```bash
 # With uvicorn
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
-Backend will be running at: **http://localhost:8000**
+Backend will be running at: http://localhost:8000
 ---
-### Step 4: Database Setup (Neon DB)
-1. Go to [Neon Dashboard](https://neon.tech)
+Step 4: Database Setup (Neon DB)
+1. Go to Neon Dashboard (https://neon.tech)
 2. Create a new project
 3. Copy the connection string
-4. Update `DATABASE_URL` in backend `.env`
+4. Update DATABASE_URL in backend .env
 The connection string format:
-```
 postgresql+asyncpg://username:password@host.neon.tech/dbname?sslmode=require
-```
 ---
-### Step 5: Run the Application
-**Terminal 1 - Backend:**
-```bash
+Step 5: Run the Application
+Terminal 1 - Backend:
 cd backend
 .venv\Scripts\activate
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
-```
-**Terminal 2 - Frontend:**
-```bash
+Terminal 2 - Frontend:
 cd frontend
 npm run dev
-```
 ---
 ## API Endpoints
 ### Authentication
@@ -212,20 +184,14 @@ npm run dev
 ### Chat
 - `POST /api/chat/message` - Send message to AI chatbot
 ---
-## Environment Variables
-### Frontend (.env.local)
-```env
+Environment Variables
+Frontend (.env.local)
 BETTER_AUTH_SECRET=your_32_char_secret_key
 BETTER_AUTH_URL=http://localhost:3000
-NEXT_PUBLIC_API_URL=http://localhost:8000
-DATABASE_URL= "postgresql://neondb_owner------------------------"
-```
-### Backend (.env)
-```env
+Backend (.env)
 DATABASE_URL=postgresql+asyncpg://...
 BETTER_AUTH_SECRET=your_32_char_secret_key
 GEMINI_API_KEY=your_gemini_api_key
-```
 ---
 ## How to Use
 ### 1. Landing Page
@@ -237,51 +203,49 @@ After login → View all tasks → Add new tasks → Mark complete
 ### 4. Chatbot
 Click "Chat" → Type "Add task: Finish report by tomorrow" → AI parses and creates task
 ---
-## Building Steps (How I Built This)
-### Phase 1: Project Setup
+Building Steps (How I Built This)
+Phase 1: Project Setup
 1. Initialized Next.js 16 with TypeScript
 2. Set up FastAPI backend
 3. Configured Neon PostgreSQL database
-### Phase 2: Authentication
+Phase 2: Authentication
 1. Integrated Better Auth for frontend
 2. Created JWT middleware for backend
 3. Set up protected routes
-### Phase 3: Task CRUD
-1. Created `models.py` with SQLModel for Task
-2. Built REST API endpoints in `routes/tasks.py`
+Phase 3: Task CRUD
+1. Created models.py with SQLModel for Task
+2. Built REST API endpoints in routes/tasks.py
 3. Connected to frontend with API calls
-### Phase 4: UI Development
+Phase 4: UI Development
 1. Created landing page with Tailwind + Framer Motion
 2. Built login/signup pages
 3. Created dashboard with task list
 4. Added dark theme with amber accents
-### Phase 5: AI Chatbot
+Phase 5: AI Chatbot
 1. Set up Gemini API integration
 2. Created MCP tools for task operations
-3. Built chat endpoint in `routes/chat.py`
+3. Built chat endpoint in routes/chat.py
 4. Created chat UI in frontend
 ---
-## Deployment
-### Frontend (Vercel)
-```bash
+Deployment
+Frontend (Vercel)
 cd frontend
 npm run build
 vercel --prod
-```
-### Backend (Railway/Render)
+Backend (Railway/Render)
 1. Push to GitHub
 2. Connect to Railway/Render
 3. Set environment variables
 4. Deploy
 ---
-## Acknowledgments
-- **Next.js** - React framework
-- **Neon** - Serverless PostgreSQL
-- **Google Gemini** - AI capabilities
-- **Better Auth** - Authentication
-- **Shadcn** - UI components
+Acknowledgments
+- Next.js - React framework
+- Neon - Serverless PostgreSQL
+- Google Gemini - AI capabilities
+- Better Auth - Authentication
+- Shadcn - UI components
 ---
-## Contact
+Contact
 For questions or support, open an issue on GitHub.
 ---
-**Built with ❤️ for Hackathon II**
+Built with ❤️ By Sana Farasat
