@@ -1,12 +1,12 @@
-
 # Spec Kit Plus - AI-Powered Task Management System
-A full-stack task management application built with Next.js, FastAPI, PostgreSQL, and AI integration (Gemini).
+A full-stack task management application built with Next.js, FastAPI, PostgreSQL, and AI integration (Gemini
+
 ## Project Overview
 This is a complete full-stack task management system where users can manage tasks in three ways:
 1. **Manual** - Add tasks manually with custom fields
-2. **Chatbot** - Use AI chatbot to add tasks conversationally  
+2. **Chatbot** - Use AI chatbot to add tasks conversationally
 3. **NLP** - Natural language processing to parse task details
-### Hackathon Achievement: Rank 3rd Place 🎉
+### Hackathon Achievement: Rank 3rd Place
 ---
 ## Tech Stack
 ### Frontend
@@ -54,44 +54,43 @@ This is a complete full-stack task management system where users can manage task
 - Error handling
 ---
 ## Project Structure
-grok_todo - Copy/
-├── frontend/                 # Next.js frontend
-│   ├── app/                  # App router pages
-│   │   ├── page.tsx         # Landing page
-│   │   ├── sign-in/         # Login page
-│   │   ├── sign-up/         # Signup page
-│   │   ├── dashboard/       # Main dashboard
-│   │   ├── chat/           # AI Chatbot page
-│   │   ├── profile/        # User profile
-│   │   └── settings/       # App settings
-│   ├── components/          # React components
-│   │   └── ui/             # Shadcn UI components
-│   ├── lib/                # Utilities
-│   │   ├── auth.ts        # Better Auth client
-│   │   ├── api.ts         # API utilities
-│   │   └── utils.ts       # Helper functions
-│   └── package.json       # Frontend dependencies
+grok_todo/
+├── frontend/
+│   ├── app/
+│   │   ├── page.tsx
+│   │   ├── sign-in/
+│   │   ├── sign-up/
+│   │   ├── dashboard/
+│   │   ├── chat/
+│   │   ├── profile/
+│   │   └── settings/
+│   ├── components/
+│   │   └── ui/
+│   ├── lib/
+│   ├── drizzle/
+│   ├── package.json
+│   └── drizzle.config.ts
 │
-├── backend/                 # FastAPI backend
-│   ├── main.py             # FastAPI app entry
-│   ├── db.py              # Database configuration
-│   ├── models.py          # SQLModel models
-│   ├── jwt_auth.py        # JWT authentication
+├── backend/
+│   ├── main.py
+│   ├── db.py
+│   ├── models.py
+│   ├── jwt_auth.py
 │   ├── routes/
-│   │   ├── tasks.py        # Task CRUD endpoints
-│   │   └── chat.py        # AI Chatbot endpoints
+│   │   ├── tasks.py
+│   │   └── chat.py
 │   ├── services/
-│   │   ├── gemini_agent.py # Gemini AI service
-│   │   └── mcp_tools.py   # MCP tools
+│   │   ├── gemini_agent.py
+│   │   └── mcp_tools.py
 │   ├── middleware/
-│   │   └── jwt_auth.py    # JWT middleware
-│   ├── alembic/           # Database migrations
-│   ├── .env               # Environment variables
-│   └── requirements.txt   # Python dependencies
+│   │   └── jwt_auth.py
+│   ├── alembic/
+│   ├── .env
+│   └── requirements.txt
 │
-├── specs/                  # Specification documents
+├── specs/
 │   └── 003-gemini-chatbot/
-└── README.md             # This file
+└── README.md
 ---
 ## Setup Instructions
 ### Prerequisites
@@ -102,37 +101,31 @@ grok_todo - Copy/
 ---
 ### Step 1: Clone the Repository
 ```bash
-# Open terminal and clone
 git clone https://github.com/YOUR_USERNAME/grok_todo.git
 cd grok_todo
 ---
 Step 2: Frontend Setup
-Navigate to the frontend directory:
 cd frontend
-Install dependencies:
 npm install
 Create environment file:
 cp .env.example .env.local
-Edit .env.local with your values:
+Edit .env.local:
 BETTER_AUTH_SECRET=your_secret_key_here
 BETTER_AUTH_URL=http://localhost:3000
 DATABASE_URL=postgresql://user:pass@host/dbname?sslmode=require
-Run database migrations (from frontend directory):
-# Option 1: Using npm scripts (after adding to package.json)
+Run database migrations:
+# Using npm scripts
 npm run db:generate
 npm run db:push
-# Option 2: Using npx directly
+# Or using npx directly
 npx drizzle-kit generate
 npx drizzle-kit push
 Start development server:
 npm run dev
-Frontend will be running at: http://localhost:3000
+Frontend running at: http://localhost:3000
 ---
 Step 3: Backend Setup
-Open a new terminal and navigate to backend:
 cd backend
-Create virtual environment:
-# Create venv
 python -m venv .venv
 # Activate (Windows)
 .venv\Scripts\activate.ps1
@@ -144,21 +137,20 @@ Or with uv:
 uv sync
 Create environment file:
 cp .env.example .env
-Edit .env with your values:
+Edit .env:
 DATABASE_URL=postgresql+asyncpg://user:pass@host/dbname?sslmode=require
 BETTER_AUTH_SECRET=your_secret_key_here
 GEMINI_API_KEY=your_gemini_api_key
 Start the backend server:
-# With uvicorn
 uvicorn main:app --reload --host 0.0.0.0 --port 8000
-Backend will be running at: http://localhost:8000
+Backend running at: http://localhost:8000
 ---
 Step 4: Database Setup (Neon DB)
 1. Go to Neon Dashboard (https://neon.tech)
 2. Create a new project
 3. Copy the connection string
 4. Update DATABASE_URL in backend .env
-The connection string format:
+Connection string format:
 postgresql+asyncpg://username:password@host.neon.tech/dbname?sslmode=require
 ---
 Step 5: Run the Application
@@ -197,13 +189,13 @@ GEMINI_API_KEY=your_gemini_api_key
 ### 1. Landing Page
 Open browser to `http://localhost:3000` - Shows landing page with Login/Sign Up buttons
 ### 2. Sign Up
-Click "Sign Up" → Enter email/password → Create account
+Click "Sign Up" - Enter email/password - Create account
 ### 3. Dashboard
-After login → View all tasks → Add new tasks → Mark complete
+After login - View all tasks - Add new tasks - Mark complete
 ### 4. Chatbot
-Click "Chat" → Type "Add task: Finish report by tomorrow" → AI parses and creates task
+Click "Chat" - Type "Add task: Finish report by tomorrow" - AI parses and creates task
 ---
-Building Steps (How I Built This)
+Building Steps
 Phase 1: Project Setup
 1. Initialized Next.js 16 with TypeScript
 2. Set up FastAPI backend
@@ -248,4 +240,4 @@ Acknowledgments
 Contact
 For questions or support, open an issue on GitHub.
 ---
-Built with ❤️ By Sana Farasat
+Built with ❤ By Sana Farasat
