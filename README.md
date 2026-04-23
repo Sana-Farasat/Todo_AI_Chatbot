@@ -1,4 +1,4 @@
-# Wrote README.md
+
 # Spec Kit Plus - AI-Powered Task Management System
 A full-stack task management application built with Next.js, FastAPI, PostgreSQL, and AI integration (Gemini).
 ## Project Overview
@@ -127,6 +127,8 @@ Edit `.env.local` with your values:
 ```env
 BETTER_AUTH_SECRET=your_secret_key_here
 BETTER_AUTH_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:8000
+DATABASE_URL= "postgresql://neondb_owner------------------------"
 ```
 Start development server:
 ```bash
@@ -215,6 +217,8 @@ npm run dev
 ```env
 BETTER_AUTH_SECRET=your_32_char_secret_key
 BETTER_AUTH_URL=http://localhost:3000
+NEXT_PUBLIC_API_URL=http://localhost:8000
+DATABASE_URL= "postgresql://neondb_owner------------------------"
 ```
 ### Backend (.env)
 ```env
